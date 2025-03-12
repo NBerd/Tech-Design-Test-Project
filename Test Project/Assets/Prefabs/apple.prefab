@@ -241,11 +241,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91f71dcb028b184a8e043c0f5a5a2d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip: {fileID: 8300000, guid: 71c3a93e3982a8d4aa2abc0972f77d74, type: 3}
-  _minVolume: 0.5
-  _maxVolume: 1
-  _minPitch: 0.8
-  _maxPitch: 1.2
+  _clips:
+  - _clip: {fileID: 8300000, guid: 71c3a93e3982a8d4aa2abc0972f77d74, type: 3}
+    _minVolume: 0.5
+    _maxVolume: 1
+    _minPitch: 0.8
+    _maxPitch: 1.2
 --- !u!82 &316939735961414714
 AudioSource:
   m_ObjectHideFlags: 0

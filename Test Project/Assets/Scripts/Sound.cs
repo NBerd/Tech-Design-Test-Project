@@ -1,48 +1,36 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class Sound : MonoBehaviour
 {
-    [SerializeField] private AudioClip _audioClip;
-    [SerializeField] private float _minVolume = 1f;
-    [SerializeField] private float _maxVolume = 1f;
-    [SerializeField] private float _minPitch = 1f;
-    [SerializeField] private float _maxPitch = 1f;
+    [SerializeField] private AudioClipSettings[] _clips;
 
     private AudioSource _audioSource;
-
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlaySound()
+    public void PlaySound() 
     {
-        AudioSourceSettings settings = GenerateSettings();
+        AudioClipSettings clip = _clips[UnityEngine.Random.Range(0, _clips.Length)];
 
-        _audioSource.volume = settings.Volume;
-        _audioSource.pitch = settings.Pitch;
+        _audioSource.volume = clip.Volume;
+        _audioSource.pitch = clip.Pitch;
 
-        _audioSource.PlayOneShot(_audioClip);
-    }
-
-    private AudioSourceSettings GenerateSettings() 
-    {
-        float volume = Random.Range(_minVolume, _maxVolume);
-        float pitch = Random.Range(_minPitch, _maxPitch);
-
-        return new AudioSourceSettings(volume, pitch);
+        _audioSource.PlayOneShot(clip.Clip);
     }
 }
 
-public struct AudioSourceSettings 
+[Serializable]
+public class AudioClipSettings
 {
-    public float Volume;
-    public float Pitch;
+    [SerializeField] private AudioClip _clip;
+    [SerializeField] private float _minVolume, _maxVolume = 1f;
+    [SerializeField] private float _minPitch, _maxPitch = 1f;
 
-    public AudioSourceSettings(float volume, float pitch) 
-    {
-        Volume = volume;
-        Pitch = pitch;
-    }
+    public AudioClip Clip => _clip;
+    public float Volume => UnityEngine.Random.Range(_minVolume, _maxVolume);
+    public float Pitch => UnityEngine.Random.Range(_minPitch, _maxPitch);
 }
