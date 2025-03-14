@@ -494,10 +494,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clips:
   - _clip: {fileID: 8300000, guid: 965a519f2fb666a45a8c35af7ad852ba, type: 3}
-    _minVolume: 0.3
-    _maxVolume: 0.6
-    _minPitch: 0.6
-    _maxPitch: 1.2
+    _minVolume: 0.2
+    _maxVolume: 0.5
+    _minPitch: 0.7
+    _maxPitch: 1
 --- !u!82 &733627636
 AudioSource:
   m_ObjectHideFlags: 0
